@@ -203,6 +203,7 @@ const Airdrop = () => {
       </main>
 
       <Footer />
+      
     </div>
   );
 };
