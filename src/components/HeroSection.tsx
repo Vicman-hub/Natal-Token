@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/Whisk_a93fb261b601644b4a74798b1ae8822fdr.jpeg";
-
+ 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center gradient-hero overflow-hidden pt-24">
     <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
