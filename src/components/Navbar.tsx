@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import icon from "../assets/icon.png";
 
 // central config
 const NAV_LINKS = [
-  { to: "/", label: "Home" },
+  { to: "/", label: "Home", isScrollTop: true },
   { to: "/presale", label: "Presale" },
   { to: "/airdrop", label: "Airdrop" },
-  { to: "/roadmap", label: "Roadmap" },
+  { to: "/#roadmap", label: "Roadmap", isScroll: true },
 ];
 
 const BUY_URL =
@@ -18,8 +18,32 @@ const BUY_URL =
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isActive = (path) => location.pathname === path;
+
+  const handleNavClick = (link) => {
+    if (link.isScroll) {
+      if (location.pathname === "/") {
+        document.getElementById("roadmap")?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        navigate("/#roadmap");
+        setTimeout(() => {
+          document.getElementById("roadmap")?.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+      setOpen(false);
+      return true;
+    }
+    if (link.isScrollTop) {
+      if (location.pathname === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      setOpen(false);
+      return false;
+    }
+    return false;
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
@@ -40,6 +64,7 @@ const Navbar = () => {
             <Link
               key={link.to}
               to={link.to}
+              onClick={(e) => { if (handleNavClick(link)) e.preventDefault(); }}
               className={`text-sm font-medium transition-colors ${
                 isActive(link.to)
                   ? "text-primary"
@@ -86,7 +111,7 @@ const Navbar = () => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => { if (handleNavClick(link)) e.preventDefault(); }}
                   className={`text-sm font-medium ${
                     isActive(link.to)
                       ? "text-primary"

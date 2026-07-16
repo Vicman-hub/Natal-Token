@@ -1,4 +1,3 @@
-
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -6,13 +5,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import Roadmap from "./pages/Roadmap.tsx";
+// import Roadmap from "./pages/Roadmap.tsx";
 import { Web3PageLayout } from "./components/Web3PageLayout";
 
 // Lazy load Web3-dependent pages
 const Presale = lazy(() => import("./pages/Presale.tsx"));
 const Airdrop = lazy(() => import("./pages/Airdrop.tsx"));
-
+   
 const App = () => (
   <TooltipProvider>
     <Toaster />
@@ -40,7 +39,7 @@ const App = () => (
             </Suspense>
           } 
         />
-        <Route path="/roadmap" element={<Roadmap />} />
+        {/* <Route path="/roadmap" element={<Roadmap />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

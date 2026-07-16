@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import icon from "../assets/icon.png";
 
 const Footer = () => (
   <footer className="bg-foreground text-primary-foreground py-12">

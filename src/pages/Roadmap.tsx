@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import { MapPin, Calendar, CheckCircle, Star, Globe, Users, Rocket, TrendingUp, ArrowRight } from "lucide-react";
 import {
   Card,
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-
+ 
 const BUY_URL =
   "https://pancakeswap.finance/add/BNB/0x6167D85E83C147E25B35b2445CBB9C2EB90673b1/500?chain=bsc";
 
@@ -343,9 +343,9 @@ const Roadmap = () => {
         </div>
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
-
+ 
 export default Roadmap;
